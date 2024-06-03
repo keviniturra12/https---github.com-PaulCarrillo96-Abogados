@@ -1,0 +1,413 @@
+body {margin: 0;}
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #193468;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #122444;}
+
+ul.topnav li a.active {background-color: #969696;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+
+.modal {
+  display: none; /* Oculta la modal por defecto */
+  position: fixed; /* Fija la modal en una posición relativa a la ventana del navegador */
+  z-index: 1; /* Define la posición z del elemento, colocándolo por encima de otros elementos */
+  left: 0; /* Alinea la modal a la izquierda de la ventana del navegador */
+  top: 0; /* Alinea la modal en la parte superior de la ventana del navegador */
+  width: 100%; /* Establece que la modal ocupe el 100% del ancho de la ventana */
+  height: 100%; /* Establece que la modal ocupe el 100% de la altura de la ventana */
+  overflow: auto; /* Habilita el desplazamiento si el contenido de la modal es más grande que el área visible */
+  background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente de color negro */
+  display: flex; /* Usa flexbox para el diseño */
+  justify-content: center; /* Centra horizontalmente los elementos */
+  align-items: center; /* Centra verticalmente los elementos */
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  max-width: 500px;
+  color: var(--bs-modal-color, #000);
+  pointer-events: auto;
+  background-color: var(--bs-modal-bg, #fff);
+  background-clip: padding-box;
+  border: var(--bs-modal-border-width, 1px) solid var(--bs-modal-border-color, #000);
+  border-radius: var(--bs-modal-border-radius, 5px);
+  outline: 0;
+  padding: 20px;
+  top: 50%; /* Coloca la parte superior de la modal en el 50% de la ventana */
+  left: 50%; /* Coloca la parte izquierda de la modal en el 50% de la ventana */
+  transform: translate(-50%, -50%); /* Utiliza transform para centrar la modal */
+}
+
+.modal-footer {
+  padding: 2px 16px; /* Espaciado interno del pie de página de la modal */
+}
+
+
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+    /* Add Animation */
+    @keyframes animatetop {
+        from {top: -300px; opacity: 0}
+        to {top: 0; opacity: 1}
+    }
+
+
+   /* ESTILO BOTON USUARIO */
+
+   .btn-custom {
+    background-color: #193468; /* Mismo color de fondo que tu navbar */
+    color: white; /* Color de texto blanco */
+    padding: 14px 16px; /* Mismo padding que los enlaces en el navbar */
+    border: none; /* Eliminar bordes predeterminados */
+    cursor: pointer; /* Cursor de pointer para botones */
+    text-align: center; /* Alineación centrada del texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Comportamiento de botón */
+  }
+  
+  .btn-custom:hover {
+    background-color: #122444; /* Mismo color de fondo al pasar el ratón que los enlaces del navbar */
+  }
+  
+  .btn-custom.active {
+    background-color: #969696; /* Mismo color de fondo para el estado activo */
+  }
+  
+      
+
+
+    /* Estilo para la clase img-fluid */
+            
+    .img-fluid {
+        max-width: 100%; /* La imagen será responsive y no excederá el ancho de su contenedor */
+        height: auto; /* Mantiene la proporción original de la imagen */
+        width: 200px; /* Ancho fijo para que sea del tamaño de un icono */
+        height: 200px; /* Altura fija para que sea del tamaño de un icono */
+        border-radius: 1000px; /* Bordes redondeados */
+        filter: drop-shadow(0 0 10px rgba(0, 0, 0, .8)); /* Sombra */
+        transition: transform 0.3s ease, filter 0.3s ease; /* Transición suave para efectos */
+      }
+      
+      .img-fluid:hover {
+        transform: scale(1.15); /* Aumenta ligeramente el tamaño de la imagen al pasar el ratón */
+        filter: brightness(1.2); /* Aumenta el brillo al pasar el ratón */
+      }
+      
+
+.img-fluid {
+border: 2px solid #969696; /* Bordes del Perro de color a que quiera */ 
+}
+
+
+.img-fluid:hover {
+filter: brightness(1.2); /* Aumenta el brillo al pasar el ratón */
+}
+
+.carousel-item img {
+  width: 100%; /* Ajustar el ancho de la imagen al 100% del contenedor */
+  height: 100%; /* Altura automática para mantener la proporción */
+}
+
+
+.carousel-control-next {
+  width: 50%; /* Ancho de los botones de control */
+  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo */
+  border-radius: 50%; /* Borde redondeado */
+  border: none; /* Eliminar borde */
+}
+
+
+.carousel-control-next-icon {
+  background-image: none; /* Eliminar imagen de flecha predeterminada */
+  color: white; /* Color del icono */
+  font-size: 24px; /* Tamaño del icono */
+}
+
+.carousel-control-prev {
+  left: -2%; /* Posición del botón de control previo */
+}
+
+.carousel-control-next {
+  right: -20%; /* Posición del botón de control siguiente */
+}
+
+
+   /* ESTILO VISTAS */
+          /* Estilos generales */
+          body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilos del nav-bar */
+        .topnav1 {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            margin-top: 30px;
+        }
+
+        .topnav1 .nav-item {
+            margin: 0 10px;
+        }
+
+        .topnav1 .nav-link {
+            font-size: 1.1em;
+            color: #495057;
+        }
+
+        .topnav1 .nav-link.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Estilos del contenedor de contenido */
+        .content-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilos del formulario */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .content-section h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .content-section .form-label {
+            font-weight: bold;
+        }
+
+        .content-section .form-control {
+            border-radius: 5px;
+        }
+
+        .content-section .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+/*----------Cars para Casos legales--------------*/
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  margin: 1px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  width: calc(25% - 20px); /* 4 cards per row with margin */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.card img {
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s;
+}
+.card:hover img {
+  filter: brightness(1.2);
+}
+.card-content {
+  padding:0cap;
+  text-align: center;
+}
+
+/*-----------Burbuja----Container---------------------*/
+.container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+.card {
+margin: 10px;
+padding: 15px;
+border: 1px solid #ccc;
+border-radius: 8px;
+width: calc(33% - 20px); /* 3 cards per row with margin */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+text-align: center;
+}
+/* Estilos para el contenedor de burbujas */
+.bubble-container {
+  display: flex; /* Establece el contenedor como un elemento de tipo flex para alinear su contenido */
+  align-items: center; /* Centra verticalmente el contenido */
+  justify-content: center; /* Centra horizontalmente el contenido */
+  margin-top: 10px; /* Agrega un espacio en la parte superior del contenedor */
+  padding: 10px; /* Agrega un espacio interno alrededor del contenido */
+}
+
+/* Estilos para ajustar el tamaño de las imágenes de perfil */
+.profile-picture img {
+  width: 150px; /* Ancho deseado de la imagen */
+  height: auto; /* Altura automática para mantener la proporción */
+  border-radius: 70%; /* Asegura que la imagen sea circular */
+}
+
+
+.bubble {
+display: flex;
+align-items: center;
+padding: 5px 10px;
+border: 1px solid #ccc;
+border-radius: 20px;
+background-color: #f0f0f0;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.bubble img {
+width: 30px;
+height: 30px;
+border-radius: 50%;
+margin-right: 10px;
+}
+a {
+color: inherit; /* Inherit color from parent element */
+text-decoration: none; /* Remove underline */
+}
+
+/*<!--------------------------------------------------------->*/
+h1{
+  text-align: left;
+  
+  }
+  
+  input[type="text"], input[type="email"], select {
+  width: 100%;
+  margin-bottom: 10px;
+  }
+  
+  
+  .formulario {
+  width: 500px;
+  margin: auto;
+  flex-direction: column;
+  color: #333; /* Color de texto*/
+  font-family: Arial, sans-serif; /* Familia de fuentes*/
+  font-size: 20px; /* Tamaño de fuente */
+  text-rendering: auto;
+  text-align: auto;
+  }
+  
+  .mensaje-exito{
+  text-align: center;
+  }
+  
+  
+  input, textarea {
+   padding: 1px;
+  /* margin-bottom: 15px; /*Se tiene que borrar para alinear la barra de navegacion coincida*/
+   border-radius: auto;
+  border: 1px solid #ccc;}
+  /*border-radius : auto;*/
+  /*}*/
+  
+  input[type="submit"] {
+   background-color: #193468;/*Boton enviar*/
+  color: white;
+  width: 100%;
+  margin-top: 10px;
+  }
+  
+  input[type="submit"]:hover {
+   background-color: #193468;/*Sobre el boton enviar*/
+  }
+  input[type="text"],
+  input[type="email"],
+  select {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  }
+  
+  textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  }
+  
+  .mensaje-exito {
+  display: none;
+  color: green;
+  }
+  
+  .mensaje-error {
+  display: none;
+  color: red;
+  }
+  
+  .btn-img {
+    display: block; /* Hacer que el enlace sea un bloque */
+    text-align: right; /* Alinear al centro */
+  
+  }
+  .sec-title2 .title {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #0a0a0a;
+    max-width: 490px;
+    margin: 0 auto;
+  
+  }
+  
+
+
+
+
+  
