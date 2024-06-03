@@ -28,6 +28,16 @@ ul.topnav li.right {float: right;}
   ul.topnav li.right, 
   ul.topnav li {float: none;}
 }
+.modal-header {
+  padding: 2px 16px;
+  background-color: #4169b3;
+  color: white;
+}
+
+/* Modal Body */
+.modal-body {
+  padding: 2px 16px;
+}
 
 .modal {
   display: none; /* Oculta la modal por defecto */
@@ -44,7 +54,8 @@ ul.topnav li.right {float: right;}
   align-items: center; /* Centra verticalmente los elementos */
 }
 
-.modal-content {
+.modal-content1 {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 60%;
@@ -60,6 +71,17 @@ ul.topnav li.right {float: right;}
   top: 50%; /* Coloca la parte superior de la modal en el 50% de la ventana */
   left: 50%; /* Coloca la parte izquierda de la modal en el 50% de la ventana */
   transform: translate(-50%, -50%); /* Utiliza transform para centrar la modal */
+}
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
 }
 
 .modal-footer {
