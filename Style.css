@@ -88,6 +88,12 @@ ul.topnav li.right {float: right;}
   padding: 2px 16px; /* Espaciado interno del pie de página de la modal */
 }
 
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 200px; /* Ajusta el valor según sea necesario */
+}
+
 
 
 .close {
@@ -154,41 +160,59 @@ ul.topnav li.right {float: right;}
       }
       
 
-.img-fluid {
-border: 2px solid #969696; /* Bordes del Perro de color a que quiera */ 
+      .img-fluid {
+        border: 2px solid #969696; /* Bordes del Perro de color a que quiera */ 
+    }
+    
+    .img-fluid:hover {
+        filter: brightness(1.2); /* Aumenta el brillo al pasar el ratón */
+    }
+    
+/* Estilo del contenedor del carrusel con clase 'slider-box' */
+.slider-container {
+  display: flex;
+  justify-content: flex-end; /* Alinear el carrusel a la derecha */
+  margin: 10px 0; /* Margen en la parte superior e inferior */
 }
 
-
-.img-fluid:hover {
-filter: brightness(1.2); /* Aumenta el brillo al pasar el ratón */
+.slider-box {
+  width: 90%; /* Ancho del 90% del contenedor */
+  overflow: hidden; /* Ocultar el desbordamiento */
+  border-radius: 20px; /* Bordes redondeados */
+  position: relative; /* Añadido para estilos de botones */
 }
 
-.carousel-item img {
-  width: 100%; /* Ajustar el ancho de la imagen al 100% del contenedor */
-  height: 100%; /* Altura automática para mantener la proporción */
+/* Estilo de la lista desordenada dentro del carrusel */
+.slider-box ul {
+  display: flex; /* Mostrar los elementos en línea */
+  padding: 0; /* Sin relleno en la lista */
+  width: 400%; /* Ancho del 400% para contener las imágenes duplicadas */
+  animation: slide 40s linear infinite; /* Animación de deslizamiento */
+  margin: 10; /* Sin márgenes en la lista */
 }
 
+/* Animación 'slide' del carrusel */
+@keyframes slide {
+  0% { transform: translateX(0); } /* Comienza sin desplazamiento */
+  50% { transform: translateX(-50%); } /* Desplaza a la mitad del contenedor */
 
-.carousel-control-next {
-  width: 50%; /* Ancho de los botones de control */
-  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo */
-  border-radius: 50%; /* Borde redondeado */
-  border: none; /* Eliminar borde */
 }
 
-
-.carousel-control-next-icon {
-  background-image: none; /* Eliminar imagen de flecha predeterminada */
-  color: white; /* Color del icono */
-  font-size: 24px; /* Tamaño del icono */
+/* Estilo de cada elemento de la lista (cada imagen) */
+.slider-box li {
+  width: 25%; /* Ancho del 25% para ocupar un cuarto del contenedor */
+  list-style: none; /* Sin viñetas/bolitas de lista */
 }
 
-.carousel-control-prev {
-  left: -2%; /* Posición del botón de control previo */
+/* Estilo de las imágenes dentro de cada elemento de la lista */
+.slider-box img {
+  width: 100%; /* Ancho del 100% para ocupar todo el espacio disponible */
+  height: auto; /* Altura automática para mantener la proporción */
 }
 
-.carousel-control-next {
-  right: -20%; /* Posición del botón de control siguiente */
+/* Estilo para alinear el div .img a la derecha */
+.img {
+  float: right; /* Alinear a la derecha */
 }
 
 
@@ -427,6 +451,7 @@ h1{
     margin: 0 auto;
   
   }
+  
   
 
 
