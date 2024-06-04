@@ -118,11 +118,19 @@
         </div>
 
 
-        <div id="notificaciones" class="content-section">
-            <h2>Notificaciones y Comunicación</h2>
-            <!-- Contenido de notificaciones y comunicación -->
-        </div>
+       <!-- Notificaciones y Comunicación -->
+<div id="notificaciones" class="content-section">
+    <h2>Notificaciones y Comunicación</h2>
+    <div class="list-group">
+        {% for notificacion in notificaciones %}
+            <div class="list-group-item">
+                <h5 class="mb-1">{{ notificacion.titulo }}</h5>
+                <p class="mb-1">{{ notificacion.mensaje }}</p>
+                <small>{{ notificacion.fecha }}</small>
+            </div>
+        {% endfor %}
     </div>
+</div>
 
 
 <script src="Vistas.js"></script>
