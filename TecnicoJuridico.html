@@ -19,33 +19,96 @@
         <li class="right active"><a href="VistaTecnicoJuridico.html"><i class="fas fa-briefcase me-1"></i> Técnico Jurídico</a></li>
     </ul>
 
-    <!-- Navegación del Panel del Técnico Jurídico -->
-    <ul class="topnav1 nav nav-pills mb-3">
-        <li class="nav-item"><a class="nav-link active" href="#" data-section="documentos">Preparación de Documentos</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" data-section="seguimiento">Seguimiento de Causas</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" data-section="notificaciones">Notificaciones y Comunicación</a></li>
-    </ul>
+<!-- Navegación del Panel del Técnico Jurídico -->
+<ul class="topnav1 nav nav-pills mb-3">
+    <li class="nav-item"><a class="nav-link active" href="#" data-section="crear_solicitud">Crear Solicitud de Servicio</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" data-section="solicitudes_recibidas">Solicitudes Recibidas</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" data-section="seguimiento">Seguimiento de Causas</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" data-section="notificaciones">Notificaciones y Comunicación</a></li>
+</ul>
 
-    <!-- Contenedor de contenido -->
-    <div class="content-container">
-        <!-- Preparación de Documentos -->
-        <div id="documentos" class="content-section active">
-            <h2>Preparación de Documentos</h2>
-            <!-- Contenido de la preparación de documentos -->
-        </div>
+<!-- Contenedor de contenido -->
+<div class="content-container">
 
-        <!-- Seguimiento de Causas -->
-        <div id="seguimiento" class="content-section">
-            <h2>Seguimiento de Causas</h2>
-            <!-- Contenido del seguimiento de causas -->
-        </div>
+    <!-- Crear Solicitud de Servicio -->
+    <div id="crear_solicitud" class="content-section active">
+        <h2>Solicitud de Servicio</h2>
+        <form id="solicitudServicioForm" method="post" enctype="multipart/form-data" action="{% url 'crear_solicitud' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="tipoServicio" class="form-label">Tipo de Servicio</label>
+                <select id="tipoServicio" name="tipo_servicio" class="form-select" required>
+                    <option selected disabled>Seleccione un tipo de servicio</option>
+                    <option value="consulta">Consulta Jurídica</option>
+                    <option value="representacion">Representación Legal</option>
+                    <option value="documentacion">Preparación de Documentación</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción del Servicio</label>
+                <textarea id="descripcion" name="descripcion" class="form-control" rows="4" placeholder="Describa brevemente su solicitud" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="fechaPreferida" class="form-label">Fecha Preferida</label>
+                <input type="date" id="fechaPreferida" name="fecha_preferida" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="archivoAdjunto" class="form-label">Adjuntar Documentos</label>
+                <input type="file" id="archivoAdjunto" name="archivo_adjunto" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+        </form>
+    </div>
 
-        <!-- Notificaciones y Comunicación -->
-        <div id="notificaciones" class="content-section">
-            <h2>Notificaciones y Comunicación</h2>
-            <!-- Contenido de notificaciones y comunicación -->
+    <!-- Solicitudes Recibidas -->
+    <div id="solicitudes_recibidas" class="content-section">
+        <h2>Solicitudes Recibidas</h2>
+        <div class="list-group">
+            {% for solicitud in solicitudes %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">{{ solicitud.cliente }}</h5>
+                    <p class="mb-1">{{ solicitud.tipo_servicio }} - {{ solicitud.descripcion }}</p>
+                    <p class="mb-1"><strong>Fecha Preferida:</strong> {{ solicitud.fecha_preferida }}</p>
+                    {% if solicitud.archivo_adjunto %}
+                        <p class="mb-1"><strong>Documento Adjunto:</strong> <a href="{{ solicitud.archivo_adjunto.url }}" target="_blank">Ver Documento</a></p>
+                    {% endif %}
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'aceptar_solicitud' solicitud.id %}" class="btn btn-success">Aceptar</a>
+                        <a href="{% url 'rechazar_solicitud' solicitud.id %}" class="btn btn-danger">Rechazar</a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
+
+    <!-- Seguimiento de Causas -->
+    <div id="seguimiento" class="content-section">
+        <h2>Seguimiento de Causas</h2>
+        <div class="list-group">
+            {% for causa in causas %}
+                <a href="{% url 'detalle_causa' causa.id %}" class="list-group-item list-group-item-action">
+                    {{ causa.numero }} - {{ causa.estado }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Notificaciones y Comunicación -->
+    <div id="notificaciones" class="content-section">
+        <h2>Notificaciones y Comunicación</h2>
+        <div class="list-group">
+            {% for notificacion in notificaciones %}
+                <div class="list-group-item">
+                    <h5 class="mb-1">{{ notificacion.titulo }}</h5>
+                    <p class="mb-1">{{ notificacion.mensaje }}</p>
+                    <small>{{ notificacion.fecha }}</small>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
 
     <script src="Vistas.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

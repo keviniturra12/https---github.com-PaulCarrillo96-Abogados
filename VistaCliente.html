@@ -18,33 +18,52 @@
         <li class="right" class="active"><a href="VistaCliente.html"><i class="fas fa-book me-1"></i>Cliente</a></li>
     </ul>
 
-    <!-- Navegación -->
-    <ul class="topnav1 nav nav-pills mb-3">
-        <li class="nav-item"><a class="nav-link active" href="#" data-section="perfil">Perfil</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" data-section="solicitud">Solicitud de Servicio</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" data-section="estado">Estado de la Causa</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" data-section="contratos">Contratos y Documentos</a></li>
-        <li class="nav-item"><a class="nav-link" href="#" data-section="notificaciones">Notificaciones y Comunicación</a></li>
-    </ul>
+<!-- Navegación -->
+<ul class="topnav1 nav nav-pills mb-3">
+    <li class="nav-item"><a class="nav-link active" href="#" data-section="perfil">Perfil</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" data-section="solicitud">Solicitud de Servicio</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" data-section="estado">Estado de la Causa</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" data-section="contratos">Contratos y Documentos</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" data-section="notificaciones">Notificaciones y Comunicación</a></li>
+</ul>
 
-    <!-- Contenedor de contenido -->
-    <div class="content-container">
-        <div id="perfil" class="content-section active">
-            <h2>Perfil</h2>
+<!-- Contenedor de contenido -->
+<div class="content-container">
+    <div id="perfil" class="content-section active">
+        <h2>Perfil</h2>
+        <form method="post" action="{% url 'perfil' %}">
+            {% csrf_token %}
             <div class="mb-3">
                 <label for="username" class="form-label">Nombre de Usuario</label>
-                <input type="text" id="username" class="form-control" value="Nombre de usuario" readonly>
+                <input type="text" id="username" class="form-control" value="{{ user.username }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="first_name" class="form-label">Nombre</label>
+                <input type="text" id="first_name" class="form-control" value="{{ user.first_name }}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label">Apellido</label>
+                <input type="text" id="last_name" class="form-control" value="{{ user.last_name }}" readonly>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" id="email" class="form-control" placeholder="Ingrese su nuevo correo">
+                <input type="email" id="email" name="email" class="form-control" value="{{ user.email }}">
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Número de Teléfono</label>
+                <input type="text" id="phone" class="form-control" value="{{ user.profile.phone }}" readonly>
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label">Dirección</label>
-                <input type="text" id="address" class="form-control" placeholder="Ingrese su nueva dirección">
+                <input type="text" id="address" name="address" class="form-control" value="{{ user.profile.address }}">
             </div>
-            <button class="btn btn-primary">Actualizar</button>
-        </div>
+            <div class="mb-3">
+                <label for="date_of_birth" class="form-label">Fecha de Nacimiento</label>
+                <input type="date" id="date_of_birth" class="form-control" value="{{ user.profile.date_of_birth }}" readonly>
+            </div>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+    </div>
 
         <!-- Solicitud de Servicio -->
         <div id="solicitud" class="content-section">
@@ -118,11 +137,19 @@
         </div>
 
 
-        <div id="notificaciones" class="content-section">
-            <h2>Notificaciones y Comunicación</h2>
-            <!-- Contenido de notificaciones y comunicación -->
-        </div>
+       <!-- Notificaciones y Comunicación -->
+<div id="notificaciones" class="content-section">
+    <h2>Notificaciones y Comunicación</h2>
+    <div class="list-group">
+        {% for notificacion in notificaciones %}
+            <div class="list-group-item">
+                <h5 class="mb-1">{{ notificacion.titulo }}</h5>
+                <p class="mb-1">{{ notificacion.mensaje }}</p>
+                <small>{{ notificacion.fecha }}</small>
+            </div>
+        {% endfor %}
     </div>
+</div>
 
 
 <script src="Vistas.js"></script>
